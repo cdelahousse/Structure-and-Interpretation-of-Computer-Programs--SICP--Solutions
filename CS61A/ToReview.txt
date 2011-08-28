@@ -1,0 +1,4 @@
+Orders of growth...
+Week 1:
+	Count-ways problem
+	count-stairs ways problem

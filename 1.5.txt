@@ -1,0 +1,50 @@
+(define (p) (p))
+
+(define (test x y)
+  (if (= x 0)
+      0
+      y))
+
+(test 0 (p)) ;Test
+
+
+Application: Applicative order evaluation evaluates the operand sub expressions
+before evalutating the operator with the results. (p) evaluates to (p) so :
+
+(test 0 (p))
+
+reduces to
+
+(test 0 (p))
+
+which reduces to
+
+(test 0 (p))
+
+and so on.
+
+
+(test 0 (p))
+(test 0 (p))
+(test 0 (p))
+
+Compare the above to 
+(define z (7 + 1))
+using
+(test 0 z)
+
+which reduces to
+
+(test 0 (7+1))
+(test 0 8)
+(if (= 0 0) 0)
+(if true 0)
+0
+
+The first expression (test 0 (p)) using applicative ordering never allows its second
+operand to fully evaluate, therefor cannot continue reducing.
+
+Normal-order:
+evaluates to 0 because (p) is never needed. Normal order evaluation only
+evaluates operands when ABSOLUTELY needed.
+

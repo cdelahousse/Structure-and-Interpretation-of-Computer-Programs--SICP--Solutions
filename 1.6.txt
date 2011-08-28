@@ -1,0 +1,11 @@
+(define (sqrt-iter guess x)
+  (new-if (good-enough? guess x)
+            guess
+                      (sqrt-iter (improve guess x)
+                                           x)))
+
+;ANSWER
+;The new-if version of sqrt OR sqrt-iter never runs forever. The difference between if and new-if is that 'if' is a special form. The interpreter will evaluate 'if' using normal order evalutation, meaning predicates evaluate before the operands.  The predicate decides which operand gets evaluated. 
+
+;new-if is evaluated using applicative evaluation where the operands always are evaluated. In the rewritten sqrt-iter, this means that new-if will call sqrt-iter despite good-enough being evaluated to true because the operands are being evaluated. sqrt-iter calls itself forever without ever being stopped by the terminal condition.
+

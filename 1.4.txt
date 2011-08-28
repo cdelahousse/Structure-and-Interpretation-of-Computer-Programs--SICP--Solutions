@@ -1,0 +1,5 @@
+The Evaluation rule applies the value of the left most subexpression, the operand, to
+the subexpressions after they've been evaluated. The value of the operator is a
+procedure, so we can define it.
+
+The example defines a procedure to act as the operator.
