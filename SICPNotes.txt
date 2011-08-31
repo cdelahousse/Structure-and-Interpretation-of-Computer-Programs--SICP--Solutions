@@ -1,0 +1,91 @@
+﻿--------------------------------------------------
+Conditionals:
+(cond (<predicate> <expr>)
+			(<predicate> <expr>))
+everything is true, so
+(cond (4 <expr>)
+	('word <expr>)
+	('false <expr>))
+all evaluate to true.
+
+Else is a synonym for true. It's a predicate that evaluates to true.
+--------------------------------------------------
+Applicative vs. Normal order:
+Doesn't matter for function programming. You'll always get the same answers
+Effciency depends on order
+
+--------------------------------------------------
+Lambda vs define
+define associates data to symbols (or names), lambda declares procedures. (define (fn
+x y z) <body>) -> (define (parentheses) (<body>) is just synctatic sugar for (define fn (lambda (x y z) (<body>)).
+ We define a name (fn) and associate the value of the lambda to it. Functions are first
+class, so they are values.
+--------------------------------------------------
+LET
+let is synctactic sugar for ((lambda <body>) (<arg1 expression>) (<arg 2 expression>) -> anonymous function
+evaluation WITH args
+
+(let <bindings> <body>)
+where
+<bindingS> -> (<binding1> <binding2> .. <bindingN>)
+and
+<binding>	-> (name value)
+so
+
+(let ((a (fn a))
+			(b (fn2 y))
+			(c (<someotherexpression>))
+			(<body which uses a, b and c>)))
+
+NB: a of (fn a) is defined outside the body of let, that value is bound to a new
+variable called a (again) but that's within the body/scope of let). So, wihtin the
+program, there are actually two variables named 'a', but within different scopes
+
+let* is a let within a let, solving the above "NB". So, let* is a let who's body is
+another let. Let star is an abbreviation of an abbreviation because let contains a
+(lamda).
+
+For the first few lectures of SICP, you shouldn't be using let*. It means you're
+doing somwthing wrong.
+
+--------------------------------------------------
+Big Oh, big Theta
+
+Rewatch CS61A lecture 7-8 on this111!!!!!!  Big theta vs big oh?
+
+1.TIME EFFICIENCY:
+Θ(1),Θ(log N), Θ(N) ---> ex: Searching
+Θ(N log N), Θ(n²) --- > ex: sorting
+
+n² is quadratic time
+
+Θ(N³) --> ex: matrix multiply
+
+Θ(2expN),Θ(N!), Θ(NexpN)  ---> intractable. We'd never use these!
+
+2. Space Efficiency
+
+linear recursive PROCESSES:
+All the calls happen and the work is assigned to memory
+(ie. (+1 (+1 (+1 (recur cdr(var))))) )
+but not evaluated. The work is done only on the way out after the base
+case/terminal condition is passed. These take a huge amount of memory (o(n)) because
+with every additional value calculated (n), something is assigned to memory to be
+calculated later
+
+Iterative processes: 
+keeps same amount of memory. Work is done on the way IN. Can be stopped mid way and
+continued because we're saving the stack/calculations to memory
+
+ex: (inter arg->currentlist arg2->currentresult)
+
+defined as:
+(define (count sent)
+	(define (iter wds result)
+		(if (empty? wds)
+			result
+			(iter (bf wds) (+ result 1)) ))
+	(iter sent 0) )
+
+NOTE: Both linear recursion and interative recursion use the same TIME EFFICIENCY.
+The difference is their use of SPACE efficiency!!!!

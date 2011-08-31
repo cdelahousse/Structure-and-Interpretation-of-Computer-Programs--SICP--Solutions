@@ -1,3 +1,5 @@
 #gitignore
 *.bak
 CS61A/notes/*
+codefrombook/*
+internetsolutions/*

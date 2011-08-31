@@ -1,0 +1,58 @@
+Lecture 2b:
+Data Abstraction --- Rational Number represenatoins
+	-> Using numer and denom to get elements from the list instead of just using car
+	and cdr. The reason we do this is because it's another level of abstraction. We
+	abstract the selectors or constructors because it allows us to value the
+	implementation. We may switch from car to another primitive or use a different data
+	representation that doesn't use lists. When using numer or denom, that doesn't
+	matter. It's abstracted away. We're free to change everything.
+
+	NOTE: Think PDO in php.  
+
+
+LECTURE 3a
+---------------------
+
+Car, cons, cdr, list
+
+Car, cons and cdr work with pairs, which is the base data aggregate. 
+
+A list is a SEQUENCE of pairs (see box diagram in book). It's an abstract
+datatype...Well, more or less.. Scheme knows of lists.. so it's kinda concrete
+datatype. but it's build from pairs
+
+cons BUILDS PAIRS! lists are sequences of pairs with the second element of last pair
+having a special marker.
+sequences are
+(cons 1 (cons 2 (cons 3)))
+(1 2 3)
+
+
+a list is a LISP CONVENTION to represet a sequence of pairs
+
+so (cons '(4 5) '5) renders ((4 5) . 5) which is a pair
+and (cons '(4 5) '(5 3)) evelops the args into a list which creates a sequence of
+pairs but is represented and printed as this ((4 5) 5 3). 
+Looks like this (cons (cons 4 5) (cons 5 (cons 3)))   ----> sequence with a pair up
+front.
+
+(list 1 2 3 4) avoids the huge list of cons's. Syntactic sugar
+
+---------------------
+CLOSURE
+Forming pairs of pairs.
+Means of combination can be used on any object. Cons can be used to combine things
+that were combined with cons.
+Word comes from Math closure, not JS closure
+
+Forming something new by a means of combination...Glue.
+
+---------------------
+MAP vs foreach
+Map does something to the car of each element and cons it to a new list then recurs. 
+it returns a new list.
+Foreach just does something to every element but doesn't create a new list. (ie.
+print every element)
+
+I think the difference is that map has an accumulator and foreach just processes the
+elements
