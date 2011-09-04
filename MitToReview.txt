@@ -8,5 +8,11 @@ Review second half of lecture 3a -- > escher
 EXercises!
 
 Review ex 2.20, 2.18-19
+Review 2.27, 2.28
+Understand recurvist and iterative version here:
+http://sicp.org.ua/sicp/Exercise2-27
+Make recursive version of 2.27, 2.28
+
+
 
 Skipped 2.22

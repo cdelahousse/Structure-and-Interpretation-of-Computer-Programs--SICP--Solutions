@@ -89,3 +89,14 @@ defined as:
 
 NOTE: Both linear recursion and interative recursion use the same TIME EFFICIENCY.
 The difference is their use of SPACE efficiency!!!!
+
+--------------------------------------------------
+2D trees
+
+When dealing with anything 2 dimensional, use map for the horizontal dimension
+
+(define (treemap fn tree)
+	(make-tree	(fn (datum tree))
+							(map	(lambda (t) (treemap fn t))
+										(children tree) )))
+
