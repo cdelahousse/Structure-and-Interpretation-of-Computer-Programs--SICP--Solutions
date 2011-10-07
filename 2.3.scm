@@ -1,3 +1,4 @@
+(load "myhelpers.scm")
 (load "2.2.scm")
 
 (define (dbl n) (* n 2)) ;Helper 
@@ -10,7 +11,7 @@
      (dbl (rect-width rect))))
 
 (define (rect-area rect)
-  (+ (rect-length rect)
+  (* (rect-length rect)
      (rect-width rect)))
 
 
@@ -25,18 +26,20 @@
 (define rect-origin start-segment)
 (define rect-opp-origin end-segment)
 
+;The representation of these rectangles will always have sides at 0 or 90 degrees relative to the cartesian plane, 
+;so the Pythagore Therem is not necessary.
 (define (rect-length rect)
- (let ((p1 (rect-origin rect))
-       (p2 (rect-opp-origin rect)))
-   (abs (- (x-point p1) (x-point p2))))) 
+  (let ((p1 (rect-origin rect))
+        (p2 (rect-opp-origin rect)))
+    (abs (- (x-point p1) (x-point p2))))) 
 (define (rect-width rect)
- (let ((p1 (rect-origin rect))
-       (p2 (rect-opp-origin rect)))
-   (abs (- (y-point p1) (y-point p2)))))
+  (let ((p1 (rect-origin rect))
+        (p2 (rect-opp-origin rect)))
+    (abs (- (y-point p1) (y-point p2)))))
 
 ;Test representation 1
 (newline)
-(display "Test representation 1")
+(display "Test rect representation 1")
 (newline)
 (let ((r (make-rect-seg (make-segment (make-point -2.35 -3.5) (make-point 4 5)))))
   (display r)
@@ -52,7 +55,7 @@
 
 ;Representation 2 - length and height with an origin of 0.0 and positive integers... hehehe.. easy
 (define (make-rect-sides l w)
-   (cons (make-point 0 0) (cons (abs l) (abs w))))
+  (cons (make-point 0 0) (cons (abs l) (abs w))))
 
 (define (rect-length rect)
   (car (cdr rect)))
@@ -62,18 +65,16 @@
 
 ;Test rep 2
 (newline)
-(display "Test representation e")
+(display "Test representation 2")
 (newline)
 (let ((r (make-rect-sides 4 3)))
-  (display r)
-  (newline)
   (display (rect-length r))
   (newline)
   (display (rect-width r))
   (newline)
   (display (rect-param r))
   (newline)
-  (display (rect-area r))
-  )
+  (display (rect-area r)))
 
-; I know the last representation was a bit cheap, but it shows that different representations make know difference when we abstract away most of the procedures.  
+; I know the last representation was a bit cheap, but it shows that different representations make know difference when we abstract away most of the procedures.
+;What's important to note here, though, is that working with both representations helps us imagine the problem within terms of length and width instead of whatever representation we used.

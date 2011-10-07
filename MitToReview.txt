@@ -6,7 +6,7 @@ Review second half of lecture 3a -- > escher
 
 
 EXercises!
-
+review 1.16 ---> I REALLY don't understand that third variable (a) from the hint 
 Review ex 2.20, 2.18-19
 Review 2.27, 2.28
 Understand recurvist and iterative version here:

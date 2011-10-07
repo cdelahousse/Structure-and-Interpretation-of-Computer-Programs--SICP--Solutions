@@ -1,0 +1,33 @@
+(load "myhelpers.scm")
+
+(define (even? x)
+  (= (remainder x 2) 0))
+
+(define (fast-expt a b n)
+  (define (iter sum power)
+    (cond ((= power 0) a)
+          ((even? power) (iter a (square sum) (/ power 2)))
+          (else (iter (* b sum) (dec power)))))
+  (if (= n 0)
+      1
+      (iter 1 b (dec n))))
+
+(define fe fast-expt)
+
+(assert (fe 2 0) 1)
+(assert (fe 2 1) (expt 2 1))
+(assert (fe 2 2) (expt 2 2))
+(assert (fe 2 3) (expt 2 3))
+(assert (fe 2 4) (expt 2 4))
+(assert (fe 2 5) (expt 2 5))
+(assert (fe 2 6) (expt 2 6))
+(assert (fe 2 7) (expt 2 7))
+(assert (fe 2 8) (expt 2 8))
+(fe 2 0)
+(fe 2 1)
+(fe 2 2)
+(fe 2 3)
+(fe 2 4)
+(fe 2 5)
+(fe 2 6)
+(fe 2 7)

@@ -57,5 +57,6 @@
   (display s)
   (display "  ")
   (newline)
+  (display 'Midpoint)
   (print-point (mid-point s))
   (display "  "))
