@@ -5,6 +5,10 @@
   (lambda (x)
     (* x x)))
 
+(define (one? n)
+  (= n 1))
+  
+
 (define (atom? x)
   (not (pair? x)))
 
@@ -19,6 +23,8 @@
         (display 'Yaw:)
         (display 'Nawwwww!:))
     (display " ")
+    (display test-value)
+    (display " ==> ")
     (display should-equal)
     (newline)))
 

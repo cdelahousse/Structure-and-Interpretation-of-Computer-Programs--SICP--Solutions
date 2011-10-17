@@ -26,4 +26,6 @@
   (newline))
 
 (define conzer (cons 5 5))
+conzer
 (car conzer)
+(cdr conzer)

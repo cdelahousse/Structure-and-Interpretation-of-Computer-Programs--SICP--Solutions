@@ -1,3 +1,5 @@
+(load "./myhelpers.scm")
+
 (define (append l1 l2)
   (if (null? l1)
       l2
@@ -18,35 +20,39 @@
 
 
 ;test
-(append (list 1 2 3) (list 4 5))
+;(append (list 1 2 3) (list 4 5))
 
 ;exercise 2.17
-(define last 
-  (lambda (list)
-    (define (iter new_list prev_list)
-      (if (null? new_list)
-          prev_list
-          (iter (cdr new_list) new_list)))
-    (iter list list)))
+
+;Iterative
+(define (last list)
+  (define (iter newlist lastlist)
+    (if (null? newlist)
+        lastlist
+        (iter (cdr newlist) newlist)))
+  (iter list list))
 
 ;Tests
 ;List
-(last (list 1 2 3 4 5))
+(assert (last (list 1 2 3 4 5)) (list 5))
 ;Empty list
-(last '())
-        
-;exercise 2.18
+(assert (last '()) '())
 
 ;Recursive
-(define (reverse l)
-  (if (null? l)
-      l
-      (append (reverse (cdr l)) (list (car l)))))
-;NB -> appends needs two lists, that's why car l is made into a list
+(define (last l)
+  (if (null? (cdr l))
+      (list (car l))
+      (last (cdr l))))
 
-;test
+;Tests
+;List
+(assert (last (list 1 2 3 4 5)) (list 5)) ;test 3
+;Empty list
+;(assert (last '()) '())
+
+
+;exercise 2.18
 (display "2.18\n")
-(reverse (list 1 2 3 4 5))
 
 ;lets try it iteratively
 (define (reverse-iter l)
@@ -58,5 +64,35 @@
 ;Note: (cons <list> nil) is equivalent to (list (car l) because a one item list is (<item> '()) and nil is pretty much '()
 
 ;Test
-(reverse-iter (list 1 2 3 4 5))
+(assert (reverse-iter (list 1 2 3 4 5)) (list 5 4 3 2 1))
+
+;Another implementation without using append
+(define (reverse-iter l)
+  (define (iter rev_list  curr_list)
+    (if (null? curr_list)
+        rev_list
+        (iter (cons (car curr_list) rev_list) (cdr curr_list))))
+  (iter (list (car l)) (cdr l)))
+
+;Test
+(assert (reverse-iter (list 1 2 3 4 5)) (list 5 4 3 2 1))
+
+;Recursive: Stolen from http://community.schemewiki.org/?sicp-ex-2.18
+(define (reverse l)
+  (if (null? l)
+      l
+      (append (reverse (cdr l)) (list (car l)))))
+;NB -> appends needs two lists, that's why car l is made into a list
+(assert (reverse (list 1 2 3 4 5)) (list 5 4 3 2 1))
+
+
+(define (reverse l)
+  (if (null? l)
+      '() ;same as l
+      (append (reverse (cdr l))
+              (list (car l)))))
+
+;test
+
+(assert (reverse (list 1 2 3 4 5)) (list 5 4 3 2 1))
 

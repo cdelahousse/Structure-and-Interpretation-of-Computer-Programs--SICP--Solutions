@@ -1,12 +1,15 @@
 Review counting change ex ch1.
-review Greatest common divisor ch1
 Skipped lecture 2a
 Review second half of lecture 3a -- > escher
 
-
+Review counting change
 
 EXercises!
 review 1.16 ---> I REALLY don't understand that third variable (a) from the hint 
+NB: ab^n calculation happens at odd numbers of n
+review 1.17-18, keep in mind when counter gets to 1/1 and invariate variables
+skipped 1.19, supa complicated
+skipped 1.20, super uninteresting
 Review ex 2.20, 2.18-19
 Review 2.27, 2.28
 Understand recurvist and iterative version here:

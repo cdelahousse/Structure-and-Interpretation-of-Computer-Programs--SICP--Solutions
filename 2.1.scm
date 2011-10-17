@@ -1,4 +1,5 @@
-(load "myhelpers.scm")
+#lang planet neil/sicp
+(load "./myhelpers.scm")
 
 ;My answer
 
@@ -10,11 +11,13 @@
           (d (abs d)))
       (cons n d))))
 
-(d 'First)
+;(d 'First)
 ;Test
-(assert (cons 3 3) (new-make-rat -3 -3))
-(assert (cons -3 3) (new-make-rat -3 3))
-(assert (cons -3 3) (new-make-rat 3 -3))
+;(assert (cons 3 3) (new-make-rat -3 -3))
+;(assert (cons -3 3) (new-make-rat -3 3))
+;(assert (cons -3 3) (new-make-rat 3 -3))
+
+(new-make-rat -3 -3)
 
 ;Another implementation
 (define (new-make-rat2 n d)
@@ -22,11 +25,11 @@
         (d (abs d)))
     (cons n d)))
 
-(d 'Second)
+;(d 'Second)
 ;Tests
-(assert (new-make-rat -3 -3) (new-make-rat2 -3 -3))
-(assert (new-make-rat -3 3) (new-make-rat2 -3 3))
-(assert (new-make-rat 3 -3) (new-make-rat2 3 -3))
+;(assert (new-make-rat -3 -3) (new-make-rat2 -3 -3))
+;(assert (new-make-rat -3 3) (new-make-rat2 -3 3))
+;(assert (new-make-rat 3 -3) (new-make-rat2 3 -3))
 
 ;Better answer from Scheme Wiki
 (define (make-rat n d)
