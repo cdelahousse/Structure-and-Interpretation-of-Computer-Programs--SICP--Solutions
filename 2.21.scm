@@ -1,3 +1,5 @@
+(load "myhelpers.scm")
+
 (define lizz (list 1 2 3 4 5))
 (define square (lambda (x) (* x x)))
 ;Exercise 2.21
