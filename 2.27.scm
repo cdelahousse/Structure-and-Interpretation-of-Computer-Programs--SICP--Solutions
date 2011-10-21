@@ -1,3 +1,5 @@
+(load "myhelpers.scm")
+
 (define (append l1 l2)
   (if (null? l1)
       l2
@@ -6,7 +8,7 @@
 
 (define (reverse l)
   (if (null? l)
-      l
+      
       (append (reverse (cdr l)) (list (car l)))))
 
 (define (reverse-iter l)
@@ -40,35 +42,27 @@
    ;       ((atom? (car oldlist) )
     ;       (else (
           
-           
-    
+(define (deep-reverse l)
+  (cond ((null? l) '())
+        ((atom? l) l)
+        (else (append (deep-reverse (cdr l)) (cons (deep-reverse (car l)) nil)))))
+;It's simple. Take a list. Recurn on the car and the cdr and append the result to each other in opposite order. 
+ 
 
 ;Test
-(atom? 'a)
-(atom? '(a b))
-(atom? (cdr '(a b)))
-(display (cdr '(a b)))
-(newline)
-(car (cdr '(a b)))
 
 (define x (list (list 1 2) (list 3 4)))
-(display x)
-(newline)
 (display "reverse")
 (newline)
-(display (reverse x))
+
+(assert (reverse x) (list '(3 4) '(1 2)))
+(display "deep reverse")
 (newline)
-;(display "deep revers iter")
+(assert (deep-reverse x) (list '(4 3) '(2 1)))
 ;(newline)
-;(display (deep-reverse-iter x))
-(newline)
-(display "deep revers")
-(newline)
-(display (deep-reverse x))
-(newline)
-(display (deep-reverse '(1)))
-(newline)
-(display (deep-reverse '1))
-(newline)
-(display (deep-reverse '()))
+;(display (deep-reverse '(1)))
+;(newline)
+;(display (deep-reverse '1))
+;(newline)
+;(display (deep-reverse '()))
       

@@ -28,25 +28,3 @@
     (display should-equal)
     (newline)))
 
-
-(define assertEq
-  (lambda (test-value should-equal)
-    (set! test-number (inc test-number))
-    (display test-number)
-    (display ") ")
-    (if (= test-value should-equal)
-        (display 'Yaw)
-        (display 'Naw))
-    (newline)))
-
-
-
-(define assert2
-  (lambda (func should-equal value1 value2)
-    (set! test-number (inc test-number))
-    (display test-number)
-    (display ") ")
-    (if (= (func value1 value2) should-equal)
-        (display 'Yaw)
-        (display 'Nawwww!))
-    (newline)))
