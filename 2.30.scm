@@ -1,6 +1,6 @@
 (load "myhelpers.scm")
 
-;Excersize 2.30
+;Exersize 2.30
 (define (square-tree tree)
   (cond ((null? tree) '())
         ((atom? tree) (square tree))
@@ -18,7 +18,7 @@
 (assert (square-tree l) answer)
 
 
-;Excersize 2.30 -- Without using MAP function
+;Exersize 2.30 -- Without using MAP function
 (define (square-tree-map tree)
   (map (lambda (sub-tree) 
          (if (atom? sub-tree)

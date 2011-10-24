@@ -28,3 +28,16 @@
     (display should-equal)
     (newline)))
 
+;Tree-map rom exercise 2.31
+(define (tree-map f tree)
+  (map (lambda (sub-tree)
+         (if (atom? sub-tree)
+             (f sub-tree)
+             (tree-map f sub-tree)))
+       tree))
+
+(define (accumulate op initial sequence)
+  (if (null? sequence)
+      initial
+      (op (car sequence)
+          (accumulate op initial (cdr sequence)))))
