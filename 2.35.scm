@@ -9,7 +9,7 @@
 
 ;Exercise 2.35
 (define (count-leaves t)
-  (accumulate + ;add up numbers
+  (accumulate + ;add up numbers of lengths
               0 
               (map (lambda (tree)
                      (length (enumerate-tree tree))) ;Find length of every subtree
@@ -22,9 +22,12 @@
 
 ;Another implementation
 (define (count-leaves t)
-  (accumulate +
+  (accumulate + ;Add up all the 1s from the flat list
               0
-              (map (lambda (tree) 1) ;For every item on list, return 1
-                   (enumerate-tree t))));Flatten list
+              (map (lambda (tree) 1) ;convert every flat list item to 1
+                   (enumerate-tree t))));Flatten list and feed it to map
 
 (assert (count-leaves testval) 12)
+
+;There's an awsome completely recursive answer that doesn't use enumerate tree:
+;http://community.schemewiki.org/?sicp-ex-2.35
