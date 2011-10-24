@@ -36,17 +36,13 @@
 
 ; So, whatever (car l) in the last line of the above function is, it must be made into a list to get an accurate representation of that it is.
 
-;(define (deep-reverse-iter l)
- ; (define (iter newlist oldlist)
-  ;  (cond ((null? oldlist) newlist)
-   ;       ((atom? (car oldlist) )
-    ;       (else (
           
 (define (deep-reverse l)
   (cond ((null? l) '())
         ((atom? l) l)
         (else (append (deep-reverse (cdr l)) (cons (deep-reverse (car l)) nil)))))
 ;It's simple. Take a list. Recurn on the car and the cdr and append the result to each other in opposite order. 
+;The ONLY difference between reverse (recursive ver) and deep-reverse is the extra line (with atom?) that differentiates between a list and an atom.
  
 
 ;Test
@@ -65,4 +61,11 @@
 ;(display (deep-reverse '1))
 ;(newline)
 ;(display (deep-reverse '()))
-      
+
+
+
+;(define (deep-reverse-iter l)
+ ; (define (iter newlist oldlist)
+  ;  (cond ((null? oldlist) newlist)
+   ;       ((atom? (car oldlist) )
+    ;       (else (
