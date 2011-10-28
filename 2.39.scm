@@ -1,7 +1,7 @@
 (load "myhelpers.scm")
 
 ;Set up
-;Reverse from ex 2.18:
+;Reverse from ex 2.18 (for reference):
 (define (reverse-iter l)
   (define (iter rev_list  curr_list)
     (if (null? curr_list)
