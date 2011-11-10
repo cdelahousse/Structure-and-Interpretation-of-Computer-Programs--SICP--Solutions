@@ -29,5 +29,36 @@
             (accumulate-n op init (rests seqs))))) ;Continue one rests of the sublists
 
 
+;Test 3
+(assert (accumulate-n + 0 lizt) '(22 26 30))
+
+
+;Another implementation from Scheme Wiki, more elegant
+(define (accumulate-n op init seqs)
+  (if (null? (car seqs))
+      nil
+      (cons (accumulate op init (map car seqs)) ;Accumulate the first of every sublist
+            (accumulate-n op init (map cdr seqs))))) ;Continue one rests of the sublists
+
+;Test #4
+(assert (accumulate-n + 0 lizt) '(22 26 30))
+
+;This is a much more scheme-y answer because it uses map. This abstracts away the creation of lists and lets you think about operations on lists instead.
+
+;Even better would be to define selectors so that we could easily change the representation
+(define (first x)
+  (car x))
+
+(define (rest x)
+  (cdr x))
+
+
+(define (accumulate-n op init seqs)
+  (if (null? (car seqs))
+      nil
+      (cons (accumulate op init (map first seqs)) 
+            (accumulate-n op init (map rest seqs)))))
+
 ;Tests
+;#5
 (assert (accumulate-n + 0 lizt) '(22 26 30))
