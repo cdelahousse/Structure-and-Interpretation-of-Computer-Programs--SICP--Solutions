@@ -8,7 +8,12 @@
 (define (one? n)
   (= n 1))
   
-
+;atom? means 'is this element atomic?' It can NOT be broken down into
+;smaller components. Symbols, (quote words), number, etc are considered 
+;atoms.
+;I use atom? as a convention instead of (not (pair? x)) because I learned
+;Scheme from 'The Little Schemer'. I find it's a better and much clearer 
+;predicate.
 (define (atom? x)
   (not (pair? x)))
 
@@ -28,7 +33,7 @@
     (display should-equal)
     (newline)))
 
-;Tree-map rom exercise 2.31
+;Tree-map from exercise 2.31
 (define (tree-map f tree)
   (map (lambda (sub-tree)
          (if (atom? sub-tree)
@@ -51,3 +56,10 @@
 
 (define (flatmap proc sequence)
   (accumulate append nil (map proc sequence)))
+
+
+(define (enumerate-interval low high) 
+  (if (> low high) 
+      nil 
+      (cons low (enumerate-interval (inc low) high))))
+
