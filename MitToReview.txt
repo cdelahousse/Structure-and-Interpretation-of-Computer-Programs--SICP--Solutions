@@ -15,6 +15,7 @@ http://sicp.org.ua/sicp/Exercise2-27
 Make recursive version of 2.27, 2.28
 2.33A ->> ACCUMULATED SO FAR!! KEY IDEA! Recursive result so far
 2.35
+2.57 --> REVIEW and rewrite. Try maybe with accumulate
 
 
 
@@ -24,3 +25,7 @@ skipped 1.20, super uninteresting
 Skipped 2.22
 2.32 --> Set theory, power set, look up. See scheme wiki
 2.34 --> Horner's rule
+2.58 PART B
+	See http://wizardbook.wordpress.com/2010/12/07/exercise-2-58/
+	See http://eli.thegreenplace.net/2007/08/30/sicp-sections-231-232/
+	See http://sicp.org.ua/sicp/Exercise2-58

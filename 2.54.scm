@@ -3,6 +3,8 @@
 ;Exercise 2.54
 
 ;Setup
+
+;Save old value of 'equal?'
 (define old-equal? equal?)
 
 ;The new equal? procedure conflicts with my assert procedure
@@ -44,8 +46,8 @@
 (define (equal? l1 l2)
   (if (and (atom? l1) (atom? l1))
       (if (and (null? l1) (null? l2)) ;since (symbol? '()) does not equal true
-          #t:q
-          (and (symbol? l1) (symbol? l2) (eq? l1 l2)))
+          #t
+          (and (symbol? l1) (symbol? l2) (eq? l1 l2))) ;Both symbols? if so, check if eq?
       (and (equal? (car l1) (car l2)) (equal? (cdr l1) (cdr l2)))))
 
 
