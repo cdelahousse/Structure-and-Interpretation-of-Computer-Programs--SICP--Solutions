@@ -19,7 +19,7 @@
 
 
 ;Test set up (to test MAP)
-;FROM Ex 2.30 -- TO TEST IF MAP WORKS!
+;FROM Ex 2.30 -- Using map in other function to SEE IF MAP WORKS!
 (define (square-tree-map tree)
   (map (lambda (sub-tree) 
          (if (atom? sub-tree)
